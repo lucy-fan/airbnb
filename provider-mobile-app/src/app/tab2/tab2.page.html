@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Rentals
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button (click) = "navToNewRental()">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+  <ion-list *ngFor="let rental of rentals"> 
+    <ion-item>
+      <ion-label>Name: {{rental.name}}</ion-label>
+      <ion-label>Location: {{rental.location}}</ion-label>
+      <ion-label>Price: {{rental.price}}</ion-label>
+    </ion-item>
+  </ion-list> 
+</ion-content>
