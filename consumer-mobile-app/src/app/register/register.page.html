@@ -5,20 +5,23 @@
   </ion-header>
   
   <ion-content>
-  
-  <form [formGroup]="registerForm">
     <ion-item>
-      <ion-input type="text" formControlName="email" placeholder="Username or Email"></ion-input>
+      <ion-input type="text" [(ngModel)]="firstName" placeholder="First Name"></ion-input>
     </ion-item>
+
     <ion-item>
-      <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+      <ion-input type="text" [(ngModel)]="lastName" placeholder="Last Name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="email" placeholder="Email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
     </ion-item>
   
-    <ion-button 
-      color="primary" 
-      expand="block" 
-      [disabled]="!registerForm.valid" 
-      (click) = "navToLogin()">Register</ion-button>
-  </form>
+    <ion-button color="primary" expand="block" (click) = "navToLogin()">Register</ion-button>
+    <ion-button color="primary" expand="block" (click) = "navBackToLogin()">Back To Login</ion-button>
   </ion-content>
   

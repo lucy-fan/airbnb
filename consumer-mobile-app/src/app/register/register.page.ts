@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
+import { User } from '../models/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -9,30 +12,75 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 })
 export class RegisterPage implements OnInit {
 
-  registerForm: FormGroup;
+  user: User = new User();
+
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+
 
   constructor(
     private navCtrl: NavController,
-    public formBuilder: FormBuilder
-    ) { 
-    this.registerForm = this.formBuilder.group({
-      password: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(30)
-      ])),
-      email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(50)
-      ]))
-    });
-  }
+    private userService: UserService,
+    public alertCtrl: AlertController
+    ) { }
 
   ngOnInit() {
   }
 
   navToLogin() {
+    if (!this.firstName ||
+        !this.lastName||
+        !this.email ||
+        !this.password) {
+          this.presentMissingAlert();
+          return;
+    }
+
+    else {
+      this.user.name = this.firstName;
+      this.user.surname = this.lastName;
+      this.user.email = this.email;
+      this.user.password = this.password;
+  
+      this.userService.addUser(this.user);
+      this.navCtrl.navigateForward("login");
+    }
+  }
+
+  async presentMissingAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Missing fields',
+      message: 'Please fill in missing fields and try again.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  checkExisting() {
+    var i = 0;
+    var length = this.userService.users.length;
+    for (i = 0; i < length; i++) {
+      if (this.email == this.userService.users[i].email) {
+          this.presentExistingAlert();
+          return;
+      }
+    }
+  }
+
+  async presentExistingAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Account Already Exists',
+      message: 'This email is already associated with an existing account. Please login or create an account with another email.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  navBackToLogin() {
     this.navCtrl.navigateForward("login");
   }
 }

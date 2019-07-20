@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
+import { User } from '../models/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,31 +12,48 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 })
 export class LoginPage implements OnInit {
 
-  loginForm: FormGroup;
+  public email: string;
+  public password: string;
 
   constructor(
     private navCtrl: NavController,
-    public formBuilder: FormBuilder
+    private userService: UserService,
+    public alertCtrl: AlertController
     ) { 
-    this.loginForm = this.formBuilder.group({
-      password: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(30)
-      ])),
-      email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(50)
-      ]))
-    });
   }
 
   ngOnInit() {
   }
 
+  checkLogin() {
+    var i = 0;
+    var length = this.userService.users.length;
+    for (i = 0; i < length; i++) {
+      if (this.email == this.userService.users[i].email) {
+        if (this.password == this.userService.users[i].password) {
+          this.navCtrl.navigateForward("listings");
+          return;
+        }
+      }
+    }
+    this.presentAlert();
+  }
+
+  async presentAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Incorrect email/password entered',
+      message: 'Please check your login information and try again.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+  
+
+
+
   navToHome() {
-    this.navCtrl.navigateForward("tabs/tabs/tab1");
+    this.navCtrl.navigateForward("listings");
   }
 
   navToRegister() {

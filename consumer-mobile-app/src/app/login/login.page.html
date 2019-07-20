@@ -5,25 +5,20 @@
 </ion-header>
 
 <ion-content>
-
-  <form [formGroup]="loginForm">
   <ion-item>
-    <ion-input type="text" formControlName="email" placeholder="Username or Email"></ion-input>
+    <ion-input type="text" [(ngModel)]="email" placeholder="Email"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+    <ion-input type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
   </ion-item>
 
   <ion-button 
     color="primary" 
     expand="block" 
-    [disabled]="!loginForm.valid" 
-    (click) = "navToHome()">Login</ion-button>
+    (click) = "checkLogin()">Login</ion-button>
 
     <ion-button 
     color="primary" 
     expand="block" 
     (click) = "navToRegister()">Register</ion-button>
-
-</form>
 </ion-content>
