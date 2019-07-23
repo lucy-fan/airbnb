@@ -9,7 +9,6 @@ const listingServer = new ListingService();
 
 // get all 
 router.get('/', (req,res) => {
-    // asynchronous function call structure 
     listingServer.findListings().then(listing => {
         res.json(listing);
     }).catch(err => {
@@ -17,15 +16,23 @@ router.get('/', (req,res) => {
     });
 });
 
-// get by id
-router.get('/:id', (req,res) => {
-    // asynchronous function call structure 
-    listingServer.findListingById(req.params.id).then(listing => {
+router.get('/:hostId', (req,res) => {
+    listingServer.findListingByHostId(req.params.hostId).then(listing => {
         res.json(listing);
     }).catch(err => {
         res.json(err);
     });
 });
+
+// get by id
+// router.get('/:id', (req,res) => {
+//     // asynchronous function call structure 
+//     listingServer.findListingById(req.params.id).then(listing => {
+//         res.json(listing);
+//     }).catch(err => {
+//         res.json(err);
+//     });
+// });
 
 // create
 router.post('/create', (req,res) => {

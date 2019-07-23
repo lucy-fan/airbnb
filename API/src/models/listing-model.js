@@ -37,6 +37,7 @@ Listing.findListingById = (listingId, result) => {
 };
 
 Listing.findListingByHostId = (hostId, result) => {
+  console.log("hostId in model is: " + hostId);
     mySqlConn.query("select * from listing where hostId = ?", hostId, (res, err) => {
         if (err) {
             console.log(err);

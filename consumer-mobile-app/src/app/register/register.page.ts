@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
 import { User } from '../models/user';
 import { UserService } from '../services/user.service';
@@ -19,11 +19,14 @@ export class RegisterPage implements OnInit {
   email: string;
   password: string;
 
+  is_added: Boolean;
+
 
   constructor(
     private navCtrl: NavController,
     private userService: UserService,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    private http: HttpClient
     ) { }
 
   ngOnInit() {
@@ -43,9 +46,18 @@ export class RegisterPage implements OnInit {
       this.user.surname = this.lastName;
       this.user.email = this.email;
       this.user.password = this.password;
-  
-      this.userService.addUser(this.user);
-      this.navCtrl.navigateForward("login");
+
+      this.userService.addUser(this.user).subscribe((response) => {
+      // console.log(response);
+      if (response == false) {
+        this.presentExistingAlert();
+      }
+
+      else {
+        this.userService.setUser(this.user);
+        this.navCtrl.navigateForward("login");
+      }
+    })
     }
   }
 
@@ -57,17 +69,6 @@ export class RegisterPage implements OnInit {
     });
 
     await alert.present();
-  }
-
-  checkExisting() {
-    var i = 0;
-    var length = this.userService.users.length;
-    for (i = 0; i < length; i++) {
-      if (this.email == this.userService.users[i].email) {
-          this.presentExistingAlert();
-          return;
-      }
-    }
   }
 
   async presentExistingAlert() {

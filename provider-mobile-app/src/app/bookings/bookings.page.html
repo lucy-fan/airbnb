@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Bookings
+      </ion-title>
+      <ion-button slot="start" fill="clear" size="large" (click) = "navToDetails()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list *ngFor="let booking of bookings"> 
+      <ion-item text-wrap>
+        <ion-label>Title: {{bookinh.title}}</ion-label>
+        <ion-label>Location: {{booking.location}}</ion-label>
+      </ion-item>
+    </ion-list> 
+  </ion-content>

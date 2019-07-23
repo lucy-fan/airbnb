@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Listing Details</ion-title>
+    <ion-button slot="start" fill="clear" size="large" (click) = "navToListings()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+    <ion-button slot="end" fill="clear" size="large" (click) = "navToBookings()">
+        Booking Requests
+      </ion-button>
+      <ion-button slot="end" fill="clear" size="large" (click) = "navToEdit()">
+          Edit
+      </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item><ion-label text-wrap>Title: {{listing.title}}</ion-label></ion-item>
+    <ion-item><ion-label text-wrap>Location: {{listing.location}}</ion-label></ion-item>
+    <ion-item><ion-label text-wrap>Number Of People: {{listing.numberOfPeople}}</ion-label></ion-item>
+    <ion-item><ion-label text-wrap>Price: ${{listing.pricePerNight}}/night</ion-label></ion-item>
+    <ion-item><ion-label text-wrap>Description: {{listing.description}}</ion-label></ion-item>
+</ion-content>

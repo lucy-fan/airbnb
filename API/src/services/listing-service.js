@@ -19,6 +19,22 @@ module.exports = class ListingService {
         });
     }
 
+    // returns listings by host id
+    findListingByHostId(hostId)
+    {        
+        return new Promise((resolve, reject) => {    
+            listings.findListingByHostId(hostId, (res, err) => {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    console.log(res);
+                    resolve(res);
+                }
+            });              
+        });
+    }
+
     // returns listing by id
     findListingById(id)
     {        
@@ -53,7 +69,6 @@ module.exports = class ListingService {
             else {
                 var isDuplicate = false;
 
-                console.log(res.length);
                 res.forEach(listing => {
                     if(listing.title == listingReq.title) {
                         isDuplicate = !isDuplicate;
@@ -65,7 +80,6 @@ module.exports = class ListingService {
                     reject("Listing already exists");
                 }
 
-                console.log("making listing");
                 listings.createListing(listingReq, (res, err) => {
                     if (err) {
                         reject(err);

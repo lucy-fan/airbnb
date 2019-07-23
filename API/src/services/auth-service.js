@@ -5,12 +5,10 @@ const fs = require("fs");
 module.exports = class AuthService {
     constructor() {}
 
-    login(email, password) {
+    login(user) {
         return new Promise((resolve, reject) => { 
-            console.log("Start");
-            userServer.authenticateUser(email, password).then(user => {
-                console.log("login success");
-                resolve("login successful"); // resolve promise to return value
+            userServer.authenticateUser(user.email, user.password).then(user => {
+                resolve(user); // resolve promise to return value
             }).catch(err => {
                 reject(err); // reject error in promise
             });

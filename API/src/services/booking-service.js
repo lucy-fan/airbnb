@@ -23,7 +23,6 @@ module.exports = class BookingService {
     findBookingByListingIdAndStatus(id, status)
     {        
         return new Promise((resolve, reject) => { 
-            console.log("in");   
             bookings.findBookingByListingIdAndStatus(id, status, (res, err) => {
                 if (err) {
                     reject(err);

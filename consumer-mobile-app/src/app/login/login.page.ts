@@ -12,6 +12,7 @@ import { UserService } from '../services/user.service';
 })
 export class LoginPage implements OnInit {
 
+  user: User = new User();
   public email: string;
   public password: string;
 
@@ -26,17 +27,19 @@ export class LoginPage implements OnInit {
   }
 
   checkLogin() {
-    var i = 0;
-    var length = this.userService.users.length;
-    for (i = 0; i < length; i++) {
-      if (this.email == this.userService.users[i].email) {
-        if (this.password == this.userService.users[i].password) {
-          this.navCtrl.navigateForward("listings");
-          return;
-        }
+
+    this.user.email = this.email;
+    this.user.password = this.password;
+    this.userService.authenticate(this.user).subscribe((response) => {
+      console.log(response);
+      if (response == false) {
+        this.presentAlert();
       }
-    }
-    this.presentAlert();
+      else {
+        this.userService.setUser(response[0]);
+        this.navCtrl.navigateForward("listings");
+        }
+    })
   }
 
   async presentAlert() {
@@ -48,8 +51,6 @@ export class LoginPage implements OnInit {
 
     await alert.present();
   }
-  
-
 
 
   navToHome() {

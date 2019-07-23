@@ -50,6 +50,7 @@ module.exports = class UserService {
     }
 
     // authenticates user
+    // authenticates user
     authenticateUser(email, password)
     {        
         return new Promise((resolve, reject) => {    
@@ -57,8 +58,12 @@ module.exports = class UserService {
                 if (err) {
                     reject(err);
                 }
+                else if (res.length > 0 ) {
+                    resolve(res);
+                }
+
                 else {
-                    resolve("success");
+                    reject(false);
                 }
             });              
         });
@@ -80,7 +85,7 @@ module.exports = class UserService {
               });
             }
             else {
-              reject("user already exists");
+              reject(false);
             }
           })
         });
@@ -113,15 +118,12 @@ module.exports = class UserService {
         return new Promise((resolve, reject) => {  
             users.findUserById(id, (err, res) => { // check if user exists
                 if (err) {
-                  console.log("error");
                   reject(err);
                 }
                 if (res.length < 1) { // create user
                   reject("user does not exist");
                 }
                 else {
-                    console.log("we found it");
-                    console.log(id);
                     users.removeUser(id, (res, err) => {
                         if (err) {
                             reject(err);
@@ -133,7 +135,5 @@ module.exports = class UserService {
                 }
               })       
         });
-
-        console.log("Wtf");
     }
 }

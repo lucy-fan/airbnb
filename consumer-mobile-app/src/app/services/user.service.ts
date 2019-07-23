@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 
 @Injectable({
@@ -10,20 +11,25 @@ export class UserService {
   users: Array<User> = [];
   user: User;
 
-  constructor(private navCtrl: NavController) { }
+  constructor(
+    private navCtrl: NavController, 
+    private http: HttpClient
+    ) { }
 
   addUser(user: User) {
-    this.users.push(user);
-    console.log(user.email);
-    console.log(user.password);
+    return this.http.post('http://localhost:5000/api/auth/register', user);
   }
 
   setUser(user: User) {
     this.user = user;
   }
 
-  getUser(user: User) {
+  getUser() {
     return this.user;
+  }
+
+  authenticate(user: User) {
+    return this.http.post('http://localhost:5000/api/auth/login', user);
   }
 
 }

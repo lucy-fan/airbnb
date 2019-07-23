@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { FormControl } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 
@@ -11,12 +12,14 @@ import { UserService } from '../services/user.service';
 })
 export class LoginPage implements OnInit {
 
+  user: User = new User();
   public email: string;
   public password: string;
 
   constructor(
     private navCtrl: NavController,
-    private userService: UserService
+    private userService: UserService,
+    public alertCtrl: AlertController
     ) { 
   }
 
@@ -24,22 +27,34 @@ export class LoginPage implements OnInit {
   }
 
   checkLogin() {
-    var i = 0;
-    var length = this.userService.users.length;
-    for (i = 0; i < length; i++) {
-      if (this.email == this.userService.users[i].email) {
-        if (this.password == this.userService.users[i].password) {
-          this.navCtrl.navigateForward("tabs/tabs/tab1");
-          return;
-        }
+
+    this.user.email = this.email;
+    this.user.password = this.password;
+    this.userService.authenticate(this.user).subscribe((response) => {
+      console.log(response);
+      if (response == false) {
+        this.presentAlert();
       }
-    }
-    console.log("login failed");
+      else {
+        this.userService.setUser(response[0]);
+        this.navCtrl.navigateForward("listings");
+        }
+    })
+  }
+
+  async presentAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Incorrect email/password entered',
+      message: 'Please check your login information and try again.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 
   navToHome() {
-    this.navCtrl.navigateForward("tabs/tabs/tab1");
+    this.navCtrl.navigateForward("listings");
   }
 
   navToRegister() {

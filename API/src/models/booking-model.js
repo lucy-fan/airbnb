@@ -80,7 +80,6 @@ Booking.findBookingByDates = (start, end, result) => {
 Booking.findBookingByIdAndDates = (id, start, end, result) => {
     mySqlConn.query("select * from booking where (listingId = ? AND dateStart = ? AND dateEnd = ?)", [id, start, end], (res, err) => {
         if (err) {
-            console.log("errr??");
             console.log(err);
             result(null, err);
         }
@@ -93,10 +92,9 @@ Booking.findBookingByIdAndDates = (id, start, end, result) => {
 };
 
 Booking.createBooking = (newBooking, result) => {
-    console.log(newBooking);
     mySqlConn.query("INSERT INTO booking set ?", newBooking, (err, res) => {
         if (err) {
-            console.log("error: ", err);
+            console.log(err);
             result(err, null);
         } else {
             console.log(res);
