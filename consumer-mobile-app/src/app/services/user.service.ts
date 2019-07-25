@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 
@@ -12,7 +11,6 @@ export class UserService {
   user: User;
 
   constructor(
-    private navCtrl: NavController, 
     private http: HttpClient
     ) { }
 
@@ -28,6 +26,7 @@ export class UserService {
     return this.user;
   }
 
+  // check if user login info is correct
   authenticate(user: User) {
     return this.http.post('http://localhost:5000/api/auth/login', user);
   }

@@ -14,6 +14,8 @@ export class ListingsPage {
   listings: Listing[];
   listing: Listing = new Listing();
   user: User = new User();
+  public title: string;
+  public location: string;
 
   constructor(
     private navCtrl: NavController,
@@ -21,25 +23,24 @@ export class ListingsPage {
     private userService: UserService
     ) {}
 
-    ngOnInit() {
-      this.user = this.userService.getUser();
-      this.listings = this.listingService.returnListings(this.user);
-    }
+  ngOnInit() {
+    // get current user and listings
+    this.user = this.userService.getUser();
+    this.listings = this.listingService.returnListings(this.user);
+  }
 
-    public title: string;
-    public location: string;
-
+  // nav to new listing page to add a new listing
   navToNewListing() {
     this.navCtrl.navigateForward("new-listing");
   }
 
+  // nav to profile
   navToProfile() {
     this.navCtrl.navigateForward("profile");
   }
 
-  navigateToViewDetails(index,listing) {
-    console.log(index); // use this to find position in array to know which array element to update
-    //this.items[index] should view viewed / updated for AirBnb provider app
+  // nav to listing details for specific listing
+  navigateToViewDetails(index, listing) {
     this.listingService.setListing(listing);
     this.navCtrl.navigateForward("listing-details");
   }

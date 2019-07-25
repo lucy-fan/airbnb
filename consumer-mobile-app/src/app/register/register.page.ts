@@ -28,10 +28,11 @@ export class RegisterPage implements OnInit {
     public alertCtrl: AlertController,
     ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  navToLogin() {
+  // register user
+  navToListings() {
+    // every field must be filled out, or alert will show
     if (!this.firstName ||
         !this.lastName||
         !this.email ||
@@ -41,19 +42,22 @@ export class RegisterPage implements OnInit {
     }
 
     else {
+      // set input to the user instance
       this.user.name = this.firstName;
       this.user.surname = this.lastName;
       this.user.email = this.email;
       this.user.password = this.password;
       this.user.role = "user";
 
+      // add user to db
       this.userService.addUser(this.user).subscribe((response) => {
-      // console.log(response);
       if (response == false) {
+        // if email is already used for existing account, present alert
         this.presentExistingAlert();
       }
 
       else {
+        // set current user and nav to listings
         this.userService.setUser(this.user);
         this.navCtrl.navigateForward("listings");
       }
@@ -61,6 +65,7 @@ export class RegisterPage implements OnInit {
     }
   }
 
+  // alert for missing fields
   async presentMissingAlert() {
     const alert = await this.alertCtrl.create({
       header: 'Missing fields',
@@ -71,6 +76,7 @@ export class RegisterPage implements OnInit {
     await alert.present();
   }
 
+  // alert for email associated with account already
   async presentExistingAlert() {
     const alert = await this.alertCtrl.create({
       header: 'Account Already Exists',
@@ -81,6 +87,7 @@ export class RegisterPage implements OnInit {
     await alert.present();
   }
 
+  // nav to login 
   navBackToLogin() {
     this.navCtrl.navigateForward("login");
   }

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { Listing } from '../models/listing';
 import { User } from '../models/user';
@@ -12,7 +11,6 @@ export class ListingService {
   listing: Listing;
 
   constructor(
-    private navCtrl: NavController,
     private http: HttpClient
   ) { }
 
@@ -24,6 +22,7 @@ export class ListingService {
     return this.listing;
   }
 
+  // get all listings and add to listings array
   returnListings(user: User){
     this.listings = [];
     this.http.get('http://localhost:5000/api/listings/').subscribe((response) => {
@@ -31,7 +30,6 @@ export class ListingService {
         this.listings.push(listing);
       })
     })
-    console.log(this.listings);
     return this.listings;
   }
 }

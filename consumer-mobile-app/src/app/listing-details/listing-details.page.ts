@@ -18,13 +18,16 @@ export class ListingDetailsPage implements OnInit {
     )  { }
 
   ngOnInit() {
+    // get current listing
     this.listing = this.listingService.getListing();
   }
 
+  // navigate back to listings page
   navToListings() {
     this.navCtrl.navigateForward("listings");
   }
 
+  // nav to book now page
   navToBookings() {
     this.navCtrl.navigateForward("book-now");
   }

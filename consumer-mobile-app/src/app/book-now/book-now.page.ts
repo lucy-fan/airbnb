@@ -32,35 +32,38 @@ export class BookNowPage implements OnInit {
   ) 
   {      
     this.user = this.userService.getUser();
-    console.log("user id is: " + this.user.id);
     this.listing = this.listingService.getListing();
-    console.log("listing id is: " + this.listing.id);
 
    }
 
   ngOnInit() {
   }
 
+  // creates booking
   createBooking() {
+    // set all values into local booking object instance
     this.booking.listingId = this.listingService.getListing().id;
     this.booking.userId = this.userService.getUser().id;
     this.booking.status = "pending";
     this.booking.dateStart = this.dateStart;
     this.booking.dateEnd = this.dateEnd;
 
+    // add newly created booking to db
     this.bookingService.addBooking(this.booking).subscribe((response) => {
       if (response == false) {
+        // booking already exists for these dates
         this.presentExistingAlert();
       }
 
       else {
+        // booking created successfully
         this.presentSuccessAlert();
-        console.log("booking added");
         this.navCtrl.navigateForward('listings');
       }
     })
   }
 
+  // alert for conflicting booking
   async presentExistingAlert() {
     const alert = await this.alertCtrl.create({
       header: 'Dates Unavailable',
@@ -71,6 +74,7 @@ export class BookNowPage implements OnInit {
     await alert.present();
   }
 
+  // alert for booking success
   async presentSuccessAlert() {
     const alert = await this.alertCtrl.create({
       header: 'Success',

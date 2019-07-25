@@ -8,8 +8,7 @@ const routes: Routes = [
   { path: 'listings', loadChildren: './listings/listings.module#ListingsPageModule' },
   { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
   { path: 'listing-details', loadChildren: './listing-details/listing-details.module#ListingDetailsPageModule' },
-  { path: 'book-now', loadChildren: './book-now/book-now.module#BookNowPageModule' },
-  { path: 'bookings', loadChildren: './bookings/bookings.module#BookingsPageModule' }
+  { path: 'book-now', loadChildren: './book-now/book-now.module#BookNowPageModule' }
 ];
 @NgModule({
   imports: [

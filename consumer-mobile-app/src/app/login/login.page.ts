@@ -23,25 +23,26 @@ export class LoginPage implements OnInit {
     ) { 
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
+  // check if login is valid
   checkLogin() {
-
     this.user.email = this.email;
     this.user.password = this.password;
     this.userService.authenticate(this.user).subscribe((response) => {
-      console.log(response);
       if (response == false) {
+        // login incorrect, send alert
         this.presentAlert();
       }
       else {
+        // set current user and nav to listings
         this.userService.setUser(response[0]);
         this.navCtrl.navigateForward("listings");
         }
     })
   }
 
+  // alert for incorrect login
   async presentAlert() {
     const alert = await this.alertCtrl.create({
       header: 'Incorrect email/password entered',
