@@ -63,9 +63,9 @@ Please include the mark down table in the README.md file in the root directory o
 | Provider mobile app | User Profile       | airbnb\provider-mobile-app\src\app\profile                 |
 | Provider mobile app | List of Properties | airbnb\provider-mobile-app\src\app\listings      |
 | Provider mobile app | List of Bookings   | airbnb\provider-mobile-app\src\app\bookings          |
-| Admin Panel         | Users              | airbnb\admin-panel\src\app/components\user                                 |
-| Admin Panel         | Listings           | airbnb\admin-panel\src\app/components\listings                                  |
-| Admin Panel         | Bookings           | airbnb\admin-panel\src\app/components\bookings                                  |
+| Admin Panel         | Users              | airbnb\admin-panel\src\app\components\user                                 |
+| Admin Panel         | Listings           | airbnb\admin-panel\src\app\components\listings                                  |
+| Admin Panel         | Bookings           | airbnb\admin-panel\src\app\components\bookings                                  |
 | API                 | Routes             | airbnb\API\src\api                                                        |
 | API                 | Services           | airbnb\API\src\services |
 | API                 | Models             | airbnb\API\src\models |
