@@ -31,7 +31,6 @@ export class ListingService {
         this.listings.push(listing);
       })
     })
-    console.log(this.listings);
     return this.listings;
   }
 }

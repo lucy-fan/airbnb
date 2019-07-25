@@ -31,7 +31,6 @@ export class LoginPage implements OnInit {
     this.user.email = this.email;
     this.user.password = this.password;
     this.userService.authenticate(this.user).subscribe((response) => {
-      console.log(response);
       if (response == false) {
         this.presentAlert();
       }

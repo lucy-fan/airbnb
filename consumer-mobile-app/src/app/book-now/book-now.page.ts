@@ -32,9 +32,7 @@ export class BookNowPage implements OnInit {
   ) 
   {      
     this.user = this.userService.getUser();
-    console.log("user id is: " + this.user.id);
     this.listing = this.listingService.getListing();
-    console.log("listing id is: " + this.listing.id);
 
    }
 
@@ -55,7 +53,6 @@ export class BookNowPage implements OnInit {
 
       else {
         this.presentSuccessAlert();
-        console.log("booking added");
         this.navCtrl.navigateForward('listings');
       }
     })
