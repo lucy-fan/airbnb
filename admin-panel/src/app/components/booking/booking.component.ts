@@ -11,9 +11,8 @@ export class BookingComponent implements OnInit {
 
   bookings: Array<Booking>;
   
-  constructor(
-    private bookingService: BookingService,
-  ) {
+  constructor(private bookingService: BookingService) {
+    // gets all bookings
     this.bookings = this.bookingService.getBookings();
   }
 

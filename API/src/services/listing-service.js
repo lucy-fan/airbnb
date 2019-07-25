@@ -28,7 +28,6 @@ module.exports = class ListingService {
                     reject(err);
                 }
                 else {
-                    console.log(res);
                     resolve(res);
                 }
             });              

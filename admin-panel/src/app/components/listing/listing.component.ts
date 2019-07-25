@@ -11,9 +11,8 @@ export class ListingsComponent implements OnInit {
 
   listings: Array<Listing>;
   
-  constructor(
-    private listingService: ListingService,
-  ) {
+  constructor(private listingService: ListingService) {
+    // gets all listings
     this.listings = this.listingService.getListings();
   }
 
