@@ -35,13 +35,19 @@ export class ListingService {
     })
   }
 
+  deleteListing(listing: Listing) {
+    this.http.delete('http://localhost:5000/api/listings/delete/'+listing.id).subscribe((response) => {
+    })
+  }
+
   returnListings(user: User){
-    this.listings = [];
-    this.http.get('http://localhost:5000/api/listings/user.id').subscribe((response) => {
+    var newListings = [];
+    this.http.get('http://localhost:5000/api/listings/' + user.id).subscribe((response) => {
       Object.values(response).forEach( (listing) => {
-        this.listings.push(listing);
+        newListings.push(listing);
       })
     })
-    return this.listings;
+    this.listings = newListings;
+    return newListings;
   }
 }

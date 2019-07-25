@@ -1,30 +1,37 @@
 <ion-header>
     <ion-toolbar>
-      <ion-title>New Rental</ion-title>
+      <ion-title>Edit Listing</ion-title>
     </ion-toolbar>
   </ion-header>
   
   <ion-content>
+      <ion-grid>
+          <ion-row justify-content-center align-items-center>
+            <ion-card>
 
     <ion-item>
-      <ion-input type="text" [(ngModel)]="title" value={{listing.title}} placeholder="Title"></ion-input>
+      <ion-input type="text" [(ngModel)]="title" value={{title}} placeholder="Title"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input type="text" [(ngModel)]="location" value={{listing.location}} placeholder="Location"></ion-input>
+      <ion-input type="text" [(ngModel)]="location" value={{location}} placeholder="Location"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input type="number" [(ngModel)]="numberOfPeople" value={{listing.numberOfPeople}} placeholder="Number Of People"></ion-input>
+      <ion-input type="number" [(ngModel)]="numberOfPeople" value={{numberOfPeople}} placeholder="Number Of People"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input type="number" [(ngModel)]="pricePerNight" value={{listing.pricePerNight}} placeholder="Price Per Night"></ion-input>
+      <ion-input type="number" [(ngModel)]="pricePerNight" value={{pricePerNight}} placeholder="Price Per Night"></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-textarea rows="10" type="text" [(ngModel)]="description" value={{listing.description}} placeholder="Description"></ion-textarea>
+        <ion-textarea rows="10" type="text" [(ngModel)]="description" value={{description}} placeholder="Description"></ion-textarea>
       </ion-item>
   
-    <ion-button color="primary" expand="block" (click) = "createListing()">Create</ion-button>
+    <ion-button (click) = "editListing()">Edit</ion-button>
+    </ion-card>
+    </ion-row>
+    </ion-grid>
+    
   </ion-content>

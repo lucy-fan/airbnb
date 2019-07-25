@@ -22,8 +22,13 @@ export class ListingsPage {
     ) {}
 
     ngOnInit() {
+    }
+
+    ionViewDidEnter() {
       this.user = this.userService.getUser();
       this.listings = this.listingService.returnListings(this.user);
+      console.log("this.listings is: " + this.listings);
+      console.log("ionviewdidenter done");
     }
 
     public title: string;
@@ -37,7 +42,7 @@ export class ListingsPage {
     this.navCtrl.navigateForward("profile");
   }
 
-  navigateToViewDetails(index,listing) {
+  navigateToViewDetails(listing) {
     this.listingService.setListing(listing);
     this.navCtrl.navigateForward("listing-details");
   }

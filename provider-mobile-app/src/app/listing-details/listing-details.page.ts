@@ -36,4 +36,9 @@ export class ListingDetailsPage implements OnInit {
     this.navCtrl.navigateForward("bookings");
   }
 
+  deleteListing() {
+    this.listingService.deleteListing(this.listing);
+    this.navCtrl.navigateForward("listings");
+  }
+
 }

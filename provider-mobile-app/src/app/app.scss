@@ -4,3 +4,31 @@
 // styles are for the entire app and not just one component. Additionally, this 
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
+
+ion-content {
+    --ion-background-color:#f3f6f8;
+}
+
+ion-card {
+    width: 98%;
+    height: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: white !important;
+}
+
+ion-card-title {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+ion-card-subtitle {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+ion-card-subtitle {
+    padding-bottom: 20px;
+}

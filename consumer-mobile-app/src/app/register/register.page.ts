@@ -26,7 +26,6 @@ export class RegisterPage implements OnInit {
     private navCtrl: NavController,
     private userService: UserService,
     public alertCtrl: AlertController,
-    private http: HttpClient
     ) { }
 
   ngOnInit() {
@@ -56,7 +55,7 @@ export class RegisterPage implements OnInit {
 
       else {
         this.userService.setUser(this.user);
-        this.navCtrl.navigateForward("login");
+        this.navCtrl.navigateForward("listings");
       }
     })
     }

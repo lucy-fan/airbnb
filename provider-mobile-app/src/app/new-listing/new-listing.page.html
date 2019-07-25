@@ -5,7 +5,7 @@
   </ion-header>
   
   <ion-content>
-
+    <ion-card>
     <ion-item>
       <ion-input type="text" [(ngModel)]="title" placeholder="Title"></ion-input>
     </ion-item>
@@ -26,5 +26,6 @@
         <ion-textarea rows="10" type="text" [(ngModel)]="description" placeholder="Description"></ion-textarea>
       </ion-item>
   
-    <ion-button color="primary" expand="block" (click) = "createListing()">Create</ion-button>
+    <ion-button (click) = "createListing()">Create</ion-button>
+    </ion-card>
   </ion-content>

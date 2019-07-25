@@ -10,13 +10,15 @@
   </ion-header>
   
   <ion-content>
-    <ion-list *ngFor="let booking of bookings"> 
-      <ion-item class="item item-text-wrap">
-        <ion-label>Start Date: {{booking.dateStart}}</ion-label>
-        <ion-label>End Date: {{booking.dateEnd}}</ion-label>
-        <ion-label>{{booking.status}}</ion-label>
-        <ion-button slot="end" *ngIf='booking.status == showButtons' (click) = "acceptButton(booking)">Accept</ion-button>
-        <ion-button slot="end" *ngIf='booking.status == showButtons' (click) = "rejectButton(booking)">Reject</ion-button>
-      </ion-item>
+    <ion-list *ngFor="let booking of bookings let i=index"> 
+      <ion-card>
+        <ion-card-title>
+          Booking #{{booking.id}}<br>
+          Dates: From {{booking.dateStart}} to {{booking.dateEnd}}
+        </ion-card-title>
+        <ion-card-subtitle>Status: {{booking.status}}</ion-card-subtitle>
+        <ion-button color=success *ngIf='booking.status == showButtons' (click) = "acceptButton(booking)">Accept</ion-button>
+        <ion-button color=danger *ngIf='booking.status == showButtons' (click) = "rejectButton(booking)">Reject</ion-button>
+    </ion-card>
     </ion-list> 
   </ion-content>

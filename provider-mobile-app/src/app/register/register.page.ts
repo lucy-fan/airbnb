@@ -46,6 +46,7 @@ export class RegisterPage implements OnInit {
       this.user.surname = this.lastName;
       this.user.email = this.email;
       this.user.password = this.password;
+      this.user.role = "host";
 
       this.userService.addUser(this.user).subscribe((response) => {
       if (response == false) {
@@ -54,7 +55,7 @@ export class RegisterPage implements OnInit {
 
       else {
         this.userService.setUser(this.user);
-        this.navCtrl.navigateForward("login");
+        this.navCtrl.navigateForward("listings");
       }
     })
     }

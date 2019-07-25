@@ -1,24 +1,29 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Welcome Back!</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-item>
-    <ion-input type="text" [(ngModel)]="email" placeholder="Email"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
-  </ion-item>
-
-  <ion-button 
-    color="primary" 
-    expand="block" 
-    (click) = "checkLogin()">Login</ion-button>
-
-    <ion-button 
-    color="primary" 
-    expand="block" 
-    (click) = "navToRegister()">Register</ion-button>
-</ion-content>
+    <ion-toolbar>
+      <ion-title>Welcome Back!</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+      <ion-grid>
+          <ion-row justify-content-center align-items-center>
+    <ion-card>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="email" placeholder="Email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
+    </ion-item>
+  
+    <ion-row>
+        <ion-col width-50 style="text-align: right">
+            <ion-button (click) = "checkLogin()">Login</ion-button>
+        </ion-col>
+        <ion-col width-50 style="text-align: left">
+            <ion-button (click) = "navToRegister()">Register</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    </ion-row>
+    </ion-grid>
+  </ion-content>

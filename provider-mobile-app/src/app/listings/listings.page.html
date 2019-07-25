@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Listings
+      Your Listings
     </ion-title>
     <ion-button slot="end" fill="clear" size="large" (click) = "navToProfile()">
       <ion-icon name="contact"></ion-icon>
@@ -17,9 +17,9 @@
     </ion-fab>
 
   <ion-list *ngFor="let listing of listings let i=index;" (click)="navigateToViewDetails(i,listing);"> 
-    <ion-item text-wrap>
-      <ion-label>Title: {{listing.title}}</ion-label>
-      <ion-label>Location: {{listing.location}}</ion-label>
-    </ion-item>
+    <ion-card text-wrap>
+      <ion-card-title>Title: {{listing.title}}</ion-card-title>
+      <ion-card-subtitle>Location: {{listing.location}}</ion-card-subtitle>
+    </ion-card>
   </ion-list> 
 </ion-content>
