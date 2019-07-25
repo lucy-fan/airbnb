@@ -9,6 +9,7 @@ Listing = function(listing) {
     this.hostId = listing.hostId;
 }
 
+// finds all listings
 Listing.findAllListings = (result) => {
     mySqlConn.query("select * from listing", (res, err) => {
         if (err) {
@@ -22,6 +23,7 @@ Listing.findAllListings = (result) => {
     })
 };
 
+// finds listing by id
 Listing.findListingById = (listingId, result) => {
     mySqlConn.query("select * from listing where id = ?", listingId, (res, err) => {
         if (err) {
@@ -36,6 +38,7 @@ Listing.findListingById = (listingId, result) => {
     })
 };
 
+// finds listing by host id
 Listing.findListingByHostId = (hostId, result) => {
   console.log("hostId in model is: " + hostId);
     mySqlConn.query("select * from listing where hostId = ?", hostId, (res, err) => {
@@ -50,6 +53,7 @@ Listing.findListingByHostId = (hostId, result) => {
     })
 };
 
+// creates new listing
 Listing.createListing = (newListing, result) => {
     console.log(newListing);
     mySqlConn.query("INSERT INTO listing set ?", newListing, (err, res) => {
@@ -63,6 +67,7 @@ Listing.createListing = (newListing, result) => {
     });
 };
 
+// updates listing
 Listing.updateListingById = (listingId, listing, result) => {
     mySqlConn.query(
       "UPDATE listing SET ? WHERE id = ?",
@@ -78,6 +83,7 @@ Listing.updateListingById = (listingId, listing, result) => {
     );
   };
 
+// deletes listing
 Listing.removeListing = (listingId, result) => {
     mySqlConn.query("DELETE FROM listing WHERE id = ?", listingId, (err, res) => {
       if (err) {

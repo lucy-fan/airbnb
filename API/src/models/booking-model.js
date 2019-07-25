@@ -8,6 +8,7 @@ Booking = function(booking) {
     this.dateEnd = booking.dateEnd;
 }
 
+// returns all bookings
 Booking.findAllBookings = (result) => {
     mySqlConn.query("select * from booking", (res, err) => {
         if (err) {
@@ -21,6 +22,7 @@ Booking.findAllBookings = (result) => {
     })
 };
 
+// finds booking by id
 Booking.findBookingById = (bookingId, result) => {
     mySqlConn.query("select * from booking where id = ?", bookingId, (res, err) => {
         if (err) {
@@ -35,6 +37,7 @@ Booking.findBookingById = (bookingId, result) => {
     })
 };
 
+// finds booking(s) by listing id
 Booking.findBookingByListingId = (listingId, result) => {
     mySqlConn.query("select * from booking where listingId = ?", listingId, (res, err) => {
         if (err) {
@@ -49,6 +52,7 @@ Booking.findBookingByListingId = (listingId, result) => {
     })
 };
 
+// finds booking(s) by user id
 Booking.findBookingByUserId = (userId, result) => {
     mySqlConn.query("select * from booking where userId = ?", userId, (res, err) => {
         if (err) {
@@ -63,7 +67,7 @@ Booking.findBookingByUserId = (userId, result) => {
     })
 };
 
-
+// find booking(s) by listing id and status
 Booking.findBookingByListingIdAndStatus = (id, status, result) => {
     mySqlConn.query("select * from booking where (listingId = ? AND status = ?)", [id, status], (res, err) => {
         if (err) {
@@ -78,6 +82,7 @@ Booking.findBookingByListingIdAndStatus = (id, status, result) => {
     })
 };
 
+// find booking(s) by user id and status
 Booking.findBookingByUserIdAndStatus = (id, status, result) => {
     mySqlConn.query("select * from booking where (userId = ? AND status = ?)", [id, status], (res, err) => {
         if (err) {
@@ -92,6 +97,7 @@ Booking.findBookingByUserIdAndStatus = (id, status, result) => {
     })
 };
 
+// find booking(s) by start and end dates
 Booking.findBookingByDates = (start, end, result) => {
     mySqlConn.query("select * from booking where (dateStart = ? AND dateEnd = ?)", [start, end], (res, err) => {
         if (err) {
@@ -106,6 +112,7 @@ Booking.findBookingByDates = (start, end, result) => {
     })
 };
 
+// find booking(s) by listing id and dates
 Booking.findBookingByIdAndDates = (id, start, end, result) => {
     mySqlConn.query("select * from booking where (listingId = ? AND dateStart = ? AND dateEnd = ?)", [id, start, end], (res, err) => {
         if (err) {
@@ -120,6 +127,7 @@ Booking.findBookingByIdAndDates = (id, start, end, result) => {
     })
 };
 
+// creates new booking
 Booking.createBooking = (newBooking, result) => {
     mySqlConn.query("INSERT INTO booking set ?", newBooking, (err, res) => {
         if (err) {
@@ -132,6 +140,7 @@ Booking.createBooking = (newBooking, result) => {
     });
 };
 
+// updates booking by id
 Booking.updateBookingById = (bookingId, booking, result) => {
     mySqlConn.query(
       "UPDATE booking SET ? WHERE id = ?",
@@ -147,6 +156,7 @@ Booking.updateBookingById = (bookingId, booking, result) => {
     );
   };
 
+// deletes booking
 Booking.removeBooking = (bookingId, result) => {
     mySqlConn.query("DELETE FROM booking WHERE id = ?", bookingId, (err, res) => {
       if (err) {

@@ -64,7 +64,7 @@ module.exports = class UserService {
         });
     }
 
-    // authenticates user
+    // authenticates user during login
     authenticateUser(email, password)
     {        
         return new Promise((resolve, reject) => {    
@@ -85,6 +85,7 @@ module.exports = class UserService {
         });
     }
 
+    // creates user
     createUser(userReq) 
     {
         return new Promise((resolve, reject) => {
@@ -107,6 +108,7 @@ module.exports = class UserService {
         });
     }
 
+    // update user
     updateUser(user) 
     {
         return new Promise((resolve, reject) => {
@@ -115,7 +117,7 @@ module.exports = class UserService {
                 reject(err);
               }
               if (res.length < 1) { // no user found
-                reject("user does not exist");
+                reject(false);
               }
               else { // found user, now update
                 users.updateUserById(res[0].id, user, (err, res) => {
@@ -129,6 +131,7 @@ module.exports = class UserService {
         });
     }
 
+    // deletes user
     deleteUser(id) 
     {
         return new Promise((resolve, reject) => {  
