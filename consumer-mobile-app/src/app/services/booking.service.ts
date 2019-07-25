@@ -11,10 +11,7 @@ export class BookingService {
   booking: Booking = new Booking();
 
   constructor(
-    private http: HttpClient,
-    private userService: UserService,
-    private listingService: ListingService
-  ) 
+    private http: HttpClient) 
   { }
 
   setBooking(booking: Booking) {
