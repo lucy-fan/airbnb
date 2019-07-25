@@ -34,6 +34,21 @@ module.exports = class UserService {
         });
     }
 
+    // returns user by role
+    findUserByRole(role)
+    {        
+        return new Promise((resolve, reject) => {    
+            users.findUserByRole(role, (res, err) => {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    resolve(res);
+                }
+            });              
+        });
+    }
+
     // returns user by email
     findUserByEmail(email)
     {        
@@ -50,7 +65,6 @@ module.exports = class UserService {
     }
 
     // authenticates user
-    // authenticates user
     authenticateUser(email, password)
     {        
         return new Promise((resolve, reject) => {    
@@ -58,10 +72,12 @@ module.exports = class UserService {
                 if (err) {
                     reject(err);
                 }
+                // if user exists, res.length is bigger than 0
                 else if (res.length > 0 ) {
                     resolve(res);
                 }
 
+                // otherwise, res is empty and user does not exist
                 else {
                     reject(false);
                 }

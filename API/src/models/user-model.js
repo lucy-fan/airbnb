@@ -36,6 +36,20 @@ User.findUserById = (userId, result) => {
     })
 };
 
+User.findUserByRole = (role, result) => {
+  mySqlConn.query("select * from user where role = ?", role, (res, err) => {
+      if (err) {
+          console.log(err);
+          result(null, err);
+      }
+      else {
+          
+          console.log(res);
+          result(res, null);
+      }
+  })
+};
+
 User.findUserByEmail = (email, result) => {
     mySqlConn.query("select * from user where email = ?", email, (res, err) => {
         if (err) {

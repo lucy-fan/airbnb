@@ -46,6 +46,7 @@ export class RegisterPage implements OnInit {
       this.user.surname = this.lastName;
       this.user.email = this.email;
       this.user.password = this.password;
+      this.user.role = "user";
 
       this.userService.addUser(this.user).subscribe((response) => {
       // console.log(response);

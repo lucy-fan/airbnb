@@ -10,14 +10,7 @@ import { UserService } from '../../services/user.service';
 export class UsersComponent implements OnInit {
 
   users: Array<User>;
-  addButtonClicked: Boolean = false;
-
-  user: User = new User();
-  fname: string;
-  lname: string;
-  email: string;
-  cell: number;
-
+  
   constructor(
     private userService: UserService,
   ) {
@@ -25,19 +18,6 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  isAddUserClicked() {
-    this.addButtonClicked = !this.addButtonClicked;
-  }
-
-  isAddClicked() {
-    this.addButtonClicked = !this.addButtonClicked;
-    this.user.name = this.fname;
-    this.user.lastName = this.lname;
-    this.user.email = this.email;
-    this.user.cellPhone = this.cell;
-    this.userService.addUser(this.user);
   }
 
 }

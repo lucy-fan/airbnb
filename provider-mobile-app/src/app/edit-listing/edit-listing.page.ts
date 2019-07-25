@@ -28,7 +28,6 @@ export class EditListingPage implements OnInit {
 
   ngOnInit() {
     this.listing = this.listingService.getListing();
-    console.log(this.listing);
     this.cdRef.detectChanges();
   }
 

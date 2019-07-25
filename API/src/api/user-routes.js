@@ -27,6 +27,16 @@ router.get('/:id', (req,res) => {
     });
 });
 
+// get by id
+router.get('/role/:role', (req,res) => {
+    // asynchronous function call structure 
+    userServer.findUserByRole(req.params.role).then(user => {
+        res.json(user);
+    }).catch(err => {
+        res.json(err);
+    });
+});
+
 //create
 router.post('/create', (req,res) => {
     // asynchronous function call structure 

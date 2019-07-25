@@ -35,6 +35,35 @@ Booking.findBookingById = (bookingId, result) => {
     })
 };
 
+Booking.findBookingByListingId = (listingId, result) => {
+    mySqlConn.query("select * from booking where listingId = ?", listingId, (res, err) => {
+        if (err) {
+            console.log(err);
+            result(null, err);
+        }
+        else {
+            
+            console.log(res);
+            result(res, null);
+        }
+    })
+};
+
+Booking.findBookingByUserId = (userId, result) => {
+    mySqlConn.query("select * from booking where userId = ?", userId, (res, err) => {
+        if (err) {
+            console.log(err);
+            result(null, err);
+        }
+        else {
+            
+            console.log(res);
+            result(res, null);
+        }
+    })
+};
+
+
 Booking.findBookingByListingIdAndStatus = (id, status, result) => {
     mySqlConn.query("select * from booking where (listingId = ? AND status = ?)", [id, status], (res, err) => {
         if (err) {

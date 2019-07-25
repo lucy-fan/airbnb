@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 
@@ -12,7 +11,6 @@ export class UserService {
   user: User;
 
   constructor(
-    private navCtrl: NavController, 
     private http: HttpClient
     ) { }
 

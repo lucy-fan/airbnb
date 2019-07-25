@@ -1,30 +1,19 @@
 import { Injectable } from '@angular/core';
-import { NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
-import { Listing } from '../models/listing';
-import { User } from '../models/user';
+import { Listing } from '../../app/models/listing.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListingService {
-  listings: Array<Listing> = [];
-  listing: Listing;
+
+  listings: Array<Listing>;
 
   constructor(
-    private navCtrl: NavController,
     private http: HttpClient
   ) { }
 
-  setListing(listing: Listing) {
-    this.listing = listing;
-  }
-
-  getListing(): Listing {
-    return this.listing;
-  }
-
-  returnListings(user: User){
+  getListings(): Array<Listing> {
     this.listings = [];
     this.http.get('http://localhost:5000/api/listings/').subscribe((response) => {
       Object.values(response).forEach( (listing) => {
@@ -34,4 +23,5 @@ export class ListingService {
     console.log(this.listings);
     return this.listings;
   }
+
 }

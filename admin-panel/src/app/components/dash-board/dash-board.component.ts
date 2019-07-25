@@ -18,8 +18,12 @@ export class DashBoardComponent implements OnInit {
       rout: '/users'
     },
     {
-      name: 'Service Providers',
-      rout: '/service-providers'
+      name: 'Listings',
+      rout: '/listings'
+    },
+    {
+      name: 'Bookings',
+      rout: '/bookings'
     }
   ]
 

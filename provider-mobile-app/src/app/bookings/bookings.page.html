@@ -11,9 +11,12 @@
   
   <ion-content>
     <ion-list *ngFor="let booking of bookings"> 
-      <ion-item text-wrap>
-        <ion-label>Title: {{bookinh.title}}</ion-label>
-        <ion-label>Location: {{booking.location}}</ion-label>
+      <ion-item class="item item-text-wrap">
+        <ion-label>Start Date: {{booking.dateStart}}</ion-label>
+        <ion-label>End Date: {{booking.dateEnd}}</ion-label>
+        <ion-label>{{booking.status}}</ion-label>
+        <ion-button slot="end" *ngIf='booking.status == showButtons' (click) = "acceptButton(booking)">Accept</ion-button>
+        <ion-button slot="end" *ngIf='booking.status == showButtons' (click) = "rejectButton(booking)">Reject</ion-button>
       </ion-item>
     </ion-list> 
   </ion-content>

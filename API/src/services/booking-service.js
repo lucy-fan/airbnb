@@ -34,6 +34,36 @@ module.exports = class BookingService {
         });
     }
 
+    // returns listing by user id
+    findBookingByUserId(id)
+    {        
+        return new Promise((resolve, reject) => { 
+            bookings.findBookingByUserId(id, (res, err) => {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    resolve(res);
+                }
+            });              
+        });
+    }
+
+    // returns listing by listing id
+    findBookingByListingId(id)
+    {        
+        return new Promise((resolve, reject) => { 
+            bookings.findBookingByListingId(id, (res, err) => {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    resolve(res);
+                }
+            });              
+        });
+    }
+
     // returns listing by user id and status
     findBookingByUserIdAndStatus(id, status)
     {        
@@ -71,6 +101,8 @@ module.exports = class BookingService {
               if (err) {
                 reject(err);
               }
+
+              console.log(res);
               if (res.length < 1) { // create booking
                 bookings.createBooking(bookingReq, (err, res) => {
                   if (err) {
@@ -80,7 +112,8 @@ module.exports = class BookingService {
                 });
               }
               else {
-                reject("booking already exists for those dates");
+                console.log("we out here");
+                reject(false);
               }
             })
           });

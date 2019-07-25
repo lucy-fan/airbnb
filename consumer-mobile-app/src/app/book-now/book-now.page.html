@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>New Booking</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="dateStart" placeholder="YYYY-MM-DD"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="dateEnd" placeholder="YYYY-MM-DD"></ion-input>
+    </ion-item>
+  
+    <ion-button color="primary" expand="block" (click) = "createBooking()">Create</ion-button>
+  </ion-content>

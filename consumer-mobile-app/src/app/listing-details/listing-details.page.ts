@@ -25,12 +25,8 @@ export class ListingDetailsPage implements OnInit {
     this.navCtrl.navigateForward("listings");
   }
 
-  navToEdit() {
-    this.navCtrl.navigateForward("edit-listing");
-  }
-
   navToBookings() {
-    this.navCtrl.navigateForward("bookings");
+    this.navCtrl.navigateForward("book-now");
   }
 
 }

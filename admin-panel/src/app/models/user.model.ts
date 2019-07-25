@@ -1,6 +1,8 @@
 export class User {
+    id: number;
     name: string;
-    lastName: string;
+    surname: string;
+    role: string;
     email: string;
-    cellPhone: number;
+    password: string;
 }

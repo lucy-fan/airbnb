@@ -19,8 +19,6 @@ export class ListingService {
   addListing(listing: Listing) {
     this.http.post('http://localhost:5000/api/listings/create', listing).subscribe((response) => {
       this.listings.push(listing);
-      console.log(listing.title);
-      console.log(this.listings.length);
     })
   }
 
@@ -34,20 +32,16 @@ export class ListingService {
 
   updateListing(listing: Listing) {
     this.http.post('http://localhost:5000/api/listings/update', listing).subscribe((response) => {
-        console.log(response);
     })
   }
 
   returnListings(user: User){
     this.listings = [];
     this.http.get('http://localhost:5000/api/listings/user.id').subscribe((response) => {
-      console.log("listing service ts is:");
-      console.log(response);
       Object.values(response).forEach( (listing) => {
         this.listings.push(listing);
       })
     })
-    console.log(this.listings);
     return this.listings;
   }
 }

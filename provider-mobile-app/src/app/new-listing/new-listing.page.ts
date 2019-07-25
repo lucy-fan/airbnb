@@ -29,8 +29,6 @@ export class NewListingPage implements OnInit {
     private userService: UserService
     ) {
       this.user = this.userService.getUser();
-      console.log("user is: " + this.user.name);
-      console.log("user id is: " + this.user.id);
      }
 
   ngOnInit() {

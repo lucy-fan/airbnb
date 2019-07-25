@@ -9,14 +9,33 @@ import { BookingService } from '../services/booking.service';
   styleUrls: ['./bookings.page.scss'],
 })
 export class BookingsPage implements OnInit {
+  booking: Booking = new Booking();
+  bookings: Array<Booking> = [];
+  showButtons: string = "pending";
 
-  constructor(private navCtrl: NavController) { }
+  constructor(
+    private navCtrl: NavController,
+    private bookingService: BookingService
+    ) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewWillEnter() {
+    this.bookings = this.bookingService.returnBookingsByListing()
   }
 
   navToDetails() {
     this.navCtrl.navigateForward("listing-details");
+  }
+
+  acceptButton(booking: Booking) {
+    this.bookingService.setBooking(booking);
+    this.bookingService.acceptBooking();
+  }
+
+  rejectButton(booking: Booking) {
+    this.bookingService.setBooking(booking);
+    this.bookingService.rejectBooking();
   }
 
 }

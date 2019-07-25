@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { User } from '../models/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,7 +10,14 @@ import { NavController } from '@ionic/angular';
 })
 export class ProfilePage implements OnInit {
 
-  constructor(private navCtrl: NavController) { }
+  user: User = new User();
+
+  constructor(
+    private navCtrl: NavController,
+    private userService: UserService
+    ) { 
+      this.user = this.userService.getUser();
+    }
 
   ngOnInit() {
   }

@@ -48,7 +48,6 @@ export class RegisterPage implements OnInit {
       this.user.password = this.password;
 
       this.userService.addUser(this.user).subscribe((response) => {
-      // console.log(response);
       if (response == false) {
         this.presentExistingAlert();
       }

@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { Booking } from '../models/booking';
-import { BookingService } from '../services/booking.service';
 
 @Component({
   selector: 'app-bookings',
@@ -10,13 +7,9 @@ import { BookingService } from '../services/booking.service';
 })
 export class BookingsPage implements OnInit {
 
-  constructor(private navCtrl: NavController) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  navToDetails() {
-    this.navCtrl.navigateForward("listing-details");
   }
 
 }

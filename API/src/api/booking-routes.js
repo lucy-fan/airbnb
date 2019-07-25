@@ -23,6 +23,24 @@ router.get('/listing/:listingId/:status', (req,res) => {
     });
 });
 
+// get by listing id
+router.get('/listing/:listingId', (req,res) => {
+    bookingServer.findBookingByListingId(req.params.listingId).then(booking => {
+        res.json(booking);
+    }).catch(err => {
+        res.json(err);
+    });
+});
+
+// get by user id
+router.get('/user/:userId', (req,res) => {
+    bookingServer.findBookingByUserId(req.params.userId).then(booking => {
+        res.json(booking);
+    }).catch(err => {
+        res.json(err);
+    });
+});
+
 // get by user id and status
 router.get('/user/:userId/:status', (req,res) => {
     bookingServer.findBookingByUserIdAndStatus(req.params.userId, req.params.status).then(booking => {

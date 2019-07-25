@@ -17,7 +17,9 @@ export class ListingDetailsPage implements OnInit {
     private listingService: ListingService
     )  { }
 
-  ngOnInit() {
+    ngOnInit() {}
+
+  ionViewWillEnter() {
     this.listing = this.listingService.getListing();
   }
 
@@ -30,6 +32,7 @@ export class ListingDetailsPage implements OnInit {
   }
 
   navToBookings() {
+    this.listingService.setListing(this.listing);
     this.navCtrl.navigateForward("bookings");
   }
 
