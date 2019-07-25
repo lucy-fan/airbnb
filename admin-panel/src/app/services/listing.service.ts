@@ -9,18 +9,17 @@ export class ListingService {
 
   listings: Array<Listing>;
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
 
+  // sends get request to api that gets all listings in db
   getListings(): Array<Listing> {
     this.listings = [];
     this.http.get('http://localhost:5000/api/listings/').subscribe((response) => {
+      // push each listing into listings array
       Object.values(response).forEach( (listing) => {
         this.listings.push(listing);
       })
     })
-    console.log(this.listings);
     return this.listings;
   }
 

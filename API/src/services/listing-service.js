@@ -28,7 +28,6 @@ module.exports = class ListingService {
                     reject(err);
                 }
                 else {
-                    console.log(res);
                     resolve(res);
                 }
             });              
@@ -54,43 +53,18 @@ module.exports = class ListingService {
     createListing(listingReq) 
     {
         return new Promise((resolve, reject) => {
-          listings.findListingByHostId(listingReq.hostId, (err, res) => { // check if listing exists
-            if (err) {
-              reject(err);
-            }
-            if (res.length < 1) { // create listing
-              listings.createListing(listingReq, (err, res) => {
+            listings.createListing(listingReq, (err, res) => {
                 if (err) {
                   reject(err);
                 }
+                else {
                   resolve(res);
-              });
-            }
-            else {
-                var isDuplicate = false;
-
-                res.forEach(listing => {
-                    if(listing.title == listingReq.title) {
-                        isDuplicate = !isDuplicate;
-                        reject("Listing already exists");
-                    }
-                });
-
-                if (isDuplicate) {
-                    reject("Listing already exists");
                 }
-
-                listings.createListing(listingReq, (res, err) => {
-                    if (err) {
-                        reject(err);
-                    }
-                        resolve(res);
-                });
-            }
-          })
+            });
         });
     }
 
+    // updates listing
     updateListing(listing) 
     {
         return new Promise((resolve, reject) => {
@@ -99,7 +73,7 @@ module.exports = class ListingService {
                 reject(err);
               }
               if (res.length < 1) { // no listing found
-                reject("listing does not exist");
+                reject(false);
               }
               else { // found listing, now update
                 listings.updateListingById(res[0].id, listing, (err, res) => {
@@ -113,6 +87,7 @@ module.exports = class ListingService {
         });
     }
 
+    // deletes listing
     deleteListing(id) 
     {
         return new Promise((resolve, reject) => {  
@@ -121,7 +96,7 @@ module.exports = class ListingService {
                   reject(err);
                 }
                 if (res.length < 1) { // listing is not in db
-                  reject("listing does not exist");
+                  reject(false);
                 }
                 else {
                     listings.removeListing(id, (res, err) => {

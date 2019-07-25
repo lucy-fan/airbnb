@@ -4,9 +4,8 @@ const router = express.Router();
 const BookingService = require('../services/booking-service');
 const bookingServer = new BookingService();
 
-// get all 
+// get all bookings
 router.get('/', (req,res) => {
-    // asynchronous function call structure 
     bookingServer.findBookings().then(booking => {
         res.json(booking);
     }).catch(err => {
@@ -59,7 +58,7 @@ router.get('/date/:startDate/:endDate', (req,res) => {
     });
 });
 
-// create
+// create new booking
 router.post('/add', (req,res) => {
     bookingServer.addBooking(req.body).then(booking => {
         res.json(booking);
@@ -68,7 +67,7 @@ router.post('/add', (req,res) => {
     });
 });
 
-//update
+//update booking
 router.post('/update', (req,res) => {
     bookingServer.updateBooking(req.body).then(booking => {
         res.json(booking);
@@ -77,7 +76,7 @@ router.post('/update', (req,res) => {
     });
 });
 
-// delete
+// delete booking by id
 router.delete('/delete/:id', (req,res) => {
     bookingServer.deleteBooking(req.params.id).then(booking => {
         res.json(booking);

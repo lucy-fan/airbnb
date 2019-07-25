@@ -4,12 +4,8 @@ const router = express.Router();
 const UserService = require('../services/user-service');
 const userServer = new UserService();
 
-// with services we need asynchronous functions due to the nature of JavaScript runtime environment
-// Look at JavaScript concurrency model for more information
-
-// get all 
+// get all users
 router.get('/', (req,res) => {
-    // asynchronous function call structure 
     userServer.findUsers().then(users => {
         res.json(users);
     }).catch(err => {
@@ -17,9 +13,8 @@ router.get('/', (req,res) => {
     });
 });
 
-// get by id
+// get user by id
 router.get('/:id', (req,res) => {
-    // asynchronous function call structure 
     userServer.findUserById(req.params.id).then(user => {
         res.json(user);
     }).catch(err => {
@@ -27,9 +22,8 @@ router.get('/:id', (req,res) => {
     });
 });
 
-// get by id
+// get user by role
 router.get('/role/:role', (req,res) => {
-    // asynchronous function call structure 
     userServer.findUserByRole(req.params.role).then(user => {
         res.json(user);
     }).catch(err => {
@@ -37,9 +31,8 @@ router.get('/role/:role', (req,res) => {
     });
 });
 
-//create
+// create new user
 router.post('/create', (req,res) => {
-    // asynchronous function call structure 
     userServer.createUser(req.body).then(user => {
         res.json(user);
     }).catch(err => {
@@ -47,9 +40,8 @@ router.post('/create', (req,res) => {
     });
 });
 
-//update
+// update user
 router.post('/update', (req,res) => {
-    // asynchronous function call structure 
     userServer.updateUser(req.body).then(user => {
         res.json(user);
     }).catch(err => {
@@ -57,9 +49,8 @@ router.post('/update', (req,res) => {
     });
 });
 
-//delete
+// delete user
 router.delete('/delete/:id', (req,res) => {
-    // asynchronous function call structure 
     userServer.deleteUser(req.params.id).then(user => {
         res.json(user);
     }).catch(err => {

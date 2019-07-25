@@ -9,18 +9,17 @@ export class UserService {
 
   users: Array<User>;
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
 
+  // sends get request to api that gets all users in db
   getUsers(): Array<User> {
     this.users = [];
     this.http.get('http://localhost:5000/api/users/').subscribe((response) => {
-      Object.values(response).forEach( (User) => {
-        this.users.push(User);
+      // push each user into users array
+      Object.values(response).forEach((user) => {
+        this.users.push(user);
       })
     })
-    console.log(this.users);
     return this.users;
   }
 

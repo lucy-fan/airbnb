@@ -9,6 +9,7 @@ User = function(user) {
     this.password = user.password;
 }
 
+// finds all users
 User.findAllUsers = (result) => {
     mySqlConn.query("select * from user", (res, err) => {
         if (err) {
@@ -22,6 +23,7 @@ User.findAllUsers = (result) => {
     })
 };
 
+// finds user by id
 User.findUserById = (userId, result) => {
     mySqlConn.query("select * from user where id = ?", userId, (res, err) => {
         if (err) {
@@ -36,6 +38,7 @@ User.findUserById = (userId, result) => {
     })
 };
 
+// finds user by role
 User.findUserByRole = (role, result) => {
   mySqlConn.query("select * from user where role = ?", role, (res, err) => {
       if (err) {
@@ -50,6 +53,8 @@ User.findUserByRole = (role, result) => {
   })
 };
 
+// finds user by email
+// used for registration
 User.findUserByEmail = (email, result) => {
     mySqlConn.query("select * from user where email = ?", email, (res, err) => {
         if (err) {
@@ -57,12 +62,14 @@ User.findUserByEmail = (email, result) => {
             result(null, err);
         }
         else {
-            // console.log(res);
+            console.log(res);
             result(res, null);
         }
     })
 };
 
+// finds user by email and password
+// used to check whether the email and password from login match an existing user 
 User.authenticate = (email, password, result) => {
   mySqlConn.query("select * from user where (email = ? AND password = ?)", [email, password], (res, err) => {
       if (err) {
@@ -70,16 +77,16 @@ User.authenticate = (email, password, result) => {
           result(null, err);
       }
       else {
-          console.log("model success");
           result(res, null);
       }
   })
 };
 
+// creates new user
 User.createUser = (newUser, result) => {
     mySqlConn.query("INSERT INTO user set ?", newUser, (err, res) => {
         if (err) {
-        console.log("error: ", err);
+        console.log( err);
         result(err, null);
         } else {
         console.log(res);
@@ -88,13 +95,14 @@ User.createUser = (newUser, result) => {
     });
 };
 
+// updates user
 User.updateUserById = (userId, user, result) => {
     mySqlConn.query(
       "UPDATE user SET ? WHERE id = ?",
       [user, userId],
       (err, res) => {
         if (err) {
-          console.log("error: ", err);
+          console.log(err);
           result(null, err);
         } else {
           result(null, res);
@@ -103,10 +111,11 @@ User.updateUserById = (userId, user, result) => {
     );
   };
 
+// deletes user
 User.removeUser = (userId, result) => {
     mySqlConn.query("DELETE FROM user WHERE id = ?", userId, (err, res) => {
       if (err) {
-        console.log("error: ", err);
+        console.log(err);
         result(null, err);
       } else {
         result(null, res);

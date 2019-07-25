@@ -32,7 +32,7 @@ export class DashBoardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['/home']);
   }
 
   navTo(page) {

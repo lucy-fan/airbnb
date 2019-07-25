@@ -79,6 +79,7 @@ module.exports = class BookingService {
         });
     }
 
+    // finds booking by its start and end dates
     findBookingByDates(start, end)
     {        
         return new Promise((resolve, reject) => {    
@@ -102,8 +103,9 @@ module.exports = class BookingService {
                 reject(err);
               }
 
-              console.log(res);
-              if (res.length < 1) { // create booking
+              if (res.length < 1) { 
+                // no booking exists with the same listing id and dates
+                // add booking to database
                 bookings.createBooking(bookingReq, (err, res) => {
                   if (err) {
                     reject(err);
@@ -111,14 +113,14 @@ module.exports = class BookingService {
                     resolve(res);
                 });
               }
-              else {
-                console.log("we out here");
+              else { // booking already exists for this date, reject booking request
                 reject(false);
               }
             })
           });
     }
 
+    // updates booking
     updateBooking(booking) 
     {
         return new Promise((resolve, reject) => {
@@ -141,6 +143,7 @@ module.exports = class BookingService {
         });
     }
 
+    // deletes booking
     deleteBooking(id) 
     {
         return new Promise((resolve, reject) => {  
@@ -151,7 +154,7 @@ module.exports = class BookingService {
                 if (res.length < 1) { // booking is not in db
                   reject("booking does not exist");
                 }
-                else {
+                else { // booking found in db, delete it
                     bookings.removeBooking(id, (res, err) => {
                         if (err) {
                             reject(err);

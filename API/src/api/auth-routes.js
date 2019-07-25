@@ -2,12 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const AuthService = require('../services/auth-service');
-
 const authServe = new AuthService();
 
-//login
+// login
 router.post('/login', (req,res) => {
-    // asynchronous function call structure 
     authServe.login(req.body).then(user => {
         res.json(user);
     }).catch(err => {
@@ -15,9 +13,8 @@ router.post('/login', (req,res) => {
     });
 });
 
-//register
+// register
 router.post('/register', (req,res) => {
-    // asynchronous function call structure 
     authServe.register(req.body).then(user => {
         res.json(user);
     }).catch(err => {
