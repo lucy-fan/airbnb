@@ -40,7 +40,7 @@ export class ListingsPage {
     this.navCtrl.navigateForward("profile");
   }
 
-  navigateToViewDetails(listing) {
+  navigateToViewDetails(index, listing) {
     this.listingService.setListing(listing);
     this.navCtrl.navigateForward("listing-details");
   }
