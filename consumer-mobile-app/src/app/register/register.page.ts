@@ -48,7 +48,6 @@ export class RegisterPage implements OnInit {
       this.user.role = "user";
 
       this.userService.addUser(this.user).subscribe((response) => {
-      // console.log(response);
       if (response == false) {
         this.presentExistingAlert();
       }

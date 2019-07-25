@@ -38,8 +38,6 @@ export class ListingsPage {
   }
 
   navigateToViewDetails(index,listing) {
-    console.log(index); // use this to find position in array to know which array element to update
-    //this.items[index] should view viewed / updated for AirBnb provider app
     this.listingService.setListing(listing);
     this.navCtrl.navigateForward("listing-details");
   }
