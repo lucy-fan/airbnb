@@ -55,7 +55,7 @@ export class RegisterPage implements OnInit {
 
       else {
         this.userService.setUser(this.user);
-        this.navCtrl.navigateForward("listings");
+        this.navCtrl.navigateForward("login");
       }
     })
     }

@@ -54,20 +54,21 @@ Please include the mark down table in the README.md file in the root directory o
 
 | PROJECT             | COMPONENT          | FILE NAMES                                                                                                                                                                              |
 |---------------------|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Consumer mobile app | Login              | eg. airbnb\consumer-mobile-app\src\app\login & eg.             |
-| Consumer mobile app | Registration       | eg. Rubric-file-structure\consumer-mobile-app\consumer-mobile-app\src\pages\registration & eg. Rubric-file-structure\consumer-mobile-app\consumer-mobile-app\src\providers\registration |
-| Consumer mobile app | User Profile       | eg. Rubric-file-structure\consumer-mobile-app\consumer-mobile-app\src\pages\user & eg. Rubric-file-structure\consumer-mobile-app\consumer-mobile-app\src\providers\user                 |
-| Consumer mobile app | List of Properties | eg. Rubric-file-structure\consumer-mobile-app\consumer-mobile-app\src\pages\properties & eg. Rubric-file-structure\consumer-mobile-app\consumer-mobile-app\src\providers\properties     |
-| Provider mobile app | Login              | eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\pages\login & eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\providers\login               |
-| Provider mobile app | Registration       | eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\pages\registration & eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\providers\registration |
-| Provider mobile app | User Profile       | eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\pages\user & eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\providers\user                 |
-| Provider mobile app | List of Properties | eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\pages\properties & eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\providers\properties     |
-| Provider mobile app | List of Bookings   | eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\pages\bookings & eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\providers\bookings         |
-| Admin Panel         | Users              | eg. Rubric-file-structure\admin-panel\admin-panel\src\app\components\users & eg. Rubric-file-structure\admin-panel\admin-panel\src\app\services\users                                   |
-| Admin Panel         | Bookings           | eg. Rubric-file-structure\admin-panel\admin-panel\src\pages\bookings & eg. Rubric-file-structure\admin-panel\admin-panel\src\src\app\services\bookings                                  |
-| API                 | Users              | eg. Rubric-file-structure\API\api\src\pages\users & eg. Rubric-file-structure\api\api\provider-mobile-app\src\api\users                                                                 |
-| API                 | Bookings           | eg. Rubric-file-structure\API\api\src\pages\bookings & eg. Rubric-file-structure\api\api\provider-mobile-app\src\api\bookings                                                           |
-
+| Consumer mobile app | Login              | airbnb\consumer-mobile-app\src\app\login            |
+| Consumer mobile app | Registration       | airbnb\consumer-mobile-app\src\app\register  |
+| Consumer mobile app | User Profile       | airbnb\consumer-mobile-app\src\app\profile                  |
+| Consumer mobile app | List of Properties | airbnb\consumer-mobile-app\src\app\listings      |
+| Provider mobile app | Login              | airbnb\provider-mobile-app\src\app\login               |
+| Provider mobile app | Registration       | airbnb\provider-mobile-app\src\app\register  |
+| Provider mobile app | User Profile       | airbnb\provider-mobile-app\src\app\profile                 |
+| Provider mobile app | List of Properties | airbnb\provider-mobile-app\src\app\listings      |
+| Provider mobile app | List of Bookings   | airbnb\provider-mobile-app\src\app\bookings          |
+| Admin Panel         | Users              | airbnb\admin-panel\src\app\components\user                                 |
+| Admin Panel         | Listings           | airbnb\admin-panel\src\app\components\listings                                  |
+| Admin Panel         | Bookings           | airbnb\admin-panel\src\app\components\bookings                                  |
+| API                 | Routes             | airbnb\API\src\api                                                        |
+| API                 | Services           | airbnb\API\src\services |
+| API                 | Models             | airbnb\API\src\models |
 ### Change Git Remote URL
 
 Create new repository on GitHub.

@@ -8,7 +8,6 @@ module.exports = class AuthService {
     // takes in a user with the inputted email and password
     // returns false if no match found in db, else returns the existing user
     login(user) {
-        console.log(user);
         return new Promise((resolve, reject) => { 
             userServer.authenticateUser(user.email, user.password).then(user => {
                 resolve(user); // resolve promise to return value

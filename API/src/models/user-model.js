@@ -62,7 +62,7 @@ User.findUserByEmail = (email, result) => {
             result(null, err);
         }
         else {
-            // console.log(res);
+            console.log(res);
             result(res, null);
         }
     })
@@ -86,7 +86,7 @@ User.authenticate = (email, password, result) => {
 User.createUser = (newUser, result) => {
     mySqlConn.query("INSERT INTO user set ?", newUser, (err, res) => {
         if (err) {
-        console.log("error: ", err);
+        console.log( err);
         result(err, null);
         } else {
         console.log(res);
@@ -102,7 +102,7 @@ User.updateUserById = (userId, user, result) => {
       [user, userId],
       (err, res) => {
         if (err) {
-          console.log("error: ", err);
+          console.log(err);
           result(null, err);
         } else {
           result(null, res);
@@ -115,7 +115,7 @@ User.updateUserById = (userId, user, result) => {
 User.removeUser = (userId, result) => {
     mySqlConn.query("DELETE FROM user WHERE id = ?", userId, (err, res) => {
       if (err) {
-        console.log("error: ", err);
+        console.log(err);
         result(null, err);
       } else {
         result(null, res);

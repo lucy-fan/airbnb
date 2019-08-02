@@ -11,9 +11,8 @@ export class UsersComponent implements OnInit {
 
   users: Array<User>;
   
-  constructor(
-    private userService: UserService,
-  ) {
+  constructor(private userService: UserService) {
+    // gets all users
     this.users = this.userService.getUsers();
   }
 
